@@ -26,8 +26,8 @@ var _ = Underscore.load();
  * @type {Object.<string, string>
  */
 var TOKEN_FORMAT = {
-  JSON: 'json',
-  FORM_URL_ENCODED: 'form-urlencoded'
+  JSON: 'application/json',
+  FORM_URL_ENCODED: 'application/x-www-form-urlencoded'
 };
 
 /**
@@ -50,4 +50,11 @@ function createService(serviceName) {
  */
 function getRedirectUri(projectKey) {
   return Utilities.formatString('https://script.google.com/macros/d/%s/usercallback', projectKey);
+}
+
+if (module) {
+  module.exports = {
+    createService: createService,
+    getRedirectUri: getRedirectUri
+  };
 }
